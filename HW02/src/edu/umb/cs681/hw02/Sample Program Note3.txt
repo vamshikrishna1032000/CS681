@@ -1,0 +1,28 @@
+﻿Sample Program
+
+
+
+
+
+
+When you use  Collectors' methods, you often need to write down
+"Collectors" again and again; for example:
+
+
+...collect(Collectors.partitioningBy(
+         p->{p.getAge()>=18 && p.getVacCount()>=3},
+         Collectors.averagingDouble(
+             p-> p.getVacCount() )));
+
+
+By using "static import", you can omit "Collectors" like:
+
+
+...collect(partitioningBy(
+         p->{p.getAge()>=18 && p.getVacCount()>=3},
+         averagingDouble(
+             p-> p.getVacCount() )));
+
+
+Try to do this if you like it. See a CS680 lecture note about static
+import. It is covered in a lec note about JUnit.
