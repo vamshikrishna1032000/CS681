@@ -1,0 +1,8 @@
+Description: 
+In a stadium different seats can be booked by users. Seatsbooked that is seats available for a stadium will be the shared variable here upon which race conditions can occur.
+
+Unsafe:
+This make stadium an prone to race conditions for which the code is in unsafestadium class. When bookseat() and cancelBooking() are accessed by different threads at same time and a race condition can occur and result in a wrong value.
+
+Safe:
+To make the stadium class thread safe, i have implemented stadium class using reentrant locks, then race conditions cannot occur.
