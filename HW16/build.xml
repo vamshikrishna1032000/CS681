@@ -1,0 +1,34 @@
+<project name="HW16" basedir="." default="run">
+    <property environment="env"/>
+
+    <property name="src" location="src"/>
+    <property name="bin" location="bin"/>
+
+    <!-- Define the classpath with the bin directory -->
+    <path id="classpath">
+        <pathelement location="bin"/>
+    </path>
+
+    <target name="init">
+        <!-- Create the bin directory if it doesn't exist -->
+        <mkdir dir="${bin}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <!-- Compile Java source files to the bin directory -->
+        <javac srcdir="${src}" destdir="${bin}" includeAntRuntime="no">
+            <classpath refid="classpath"/>
+            <include name="**/*.java"/>
+        </javac>
+    </target>
+
+    <target name="run" depends="compile">
+        <!-- Run the Java class using the correct package structure -->
+        <java classname="edu.umb.cs681.hw16.FileSystemCrawler" classpathref="classpath" fork="true"/>
+    </target>
+
+    <target name="clean">
+        <!-- Delete the bin directory to clean up compiled files -->
+        <delete dir="${bin}"/>
+    </target>
+</project>
